@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import useAuth from "@/app/utils/useAuth";
 
 export default function DeleteItem(context){
   const [createItem, setItem] = useState({
@@ -9,15 +10,17 @@ export default function DeleteItem(context){
     price: "",
     image: "",
     description: "",
-    email: "dummy2@gmail.com"
+    email: ""
   })
 
   const router = useRouter();
+  const loginUserEmail = useAuth();
 
   const handleChange = (e) => {
     setItem({
       ...createItem,
       [e.target.name]: e.target.value,
+      email: loginUserEmail
     })
   }
 
@@ -60,16 +63,20 @@ export default function DeleteItem(context){
     }
   }
 
-  return (
-    <div>
-      <h1>アイテム削除</h1>
-      <form onSubmit={handleSubmit}>
-        <h2>{createItem.title}</h2>
-        <Image src={createItem.image} width={750} height={500} />
-        <h3>¥{createItem.price}</h3>
-        <p>{createItem.description}</p>
-        <button>削除</button>
-      </form>
-    </div>
-  );
+  if(loginUserEmail === email){
+    return (
+      <div>
+        <h1>アイテム削除</h1>
+        <form onSubmit={handleSubmit}>
+          <h2>{createItem.title}</h2>
+          <Image src={createItem.image} width={750} height={500} />
+          <h3>¥{createItem.price}</h3>
+          <p>{createItem.description}</p>
+          <button>削除</button>
+        </form>
+      </div>
+    );
+  } else {
+    return <h1>権限がありません</h1>
+  }
 }

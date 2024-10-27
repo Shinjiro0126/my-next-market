@@ -16,7 +16,7 @@ const [loginUserEmail, setLoginUserEmail] = useState("");
       }
 
       try {
-        const secretKey = new TextEncoder().encode("next-market-app");
+        const secretKey = new TextEncoder().encode("my-next-market");
         const decodedJwt = await jwtVerify(token, secretKey);
         setLoginUserEmail(decodedJwt.payload.email);
       } catch {
