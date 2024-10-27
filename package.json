@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.9",
     "jose": "^5.9.6",
     "mongoose": "^8.7.2",
     "next": "14.2.15",

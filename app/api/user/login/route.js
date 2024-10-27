@@ -24,8 +24,6 @@ export async function POST(request){
         const token = await new SignJWT(payload).setProtectedHeader({alg: "HS256"}).setExpirationTime("1d").sign(secretKey)
         // const token = await new SignJWT(payload).setProtectedHeader({alg: "HS256"}).setExpirationTime("id").sign(secretKey)
 
-        console.log(token)
-
         return NextResponse.json({
           message: "ログイン成功",
           token: token
