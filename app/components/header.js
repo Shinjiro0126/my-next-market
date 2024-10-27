@@ -49,7 +49,7 @@ export default function Header() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-        <Link href="/item/create" className="text-sm font-semibold leading-6 text-gray-900">
+        <Link href="/" className="text-sm font-semibold leading-6 text-gray-900">
             アイテム一覧
           </Link>
           <Link href="/item/create" className="text-sm font-semibold leading-6 text-gray-900">
@@ -87,13 +87,13 @@ export default function Header() {
               <div className="space-y-2 py-6">
                 <Link
                   href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" onClick={() => setMobileMenuOpen(false)}
                 >
                   アイテム一覧
                 </Link>
                 <Link
                   href="/item/create"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" onClick={() => setMobileMenuOpen(false)}
                 >
                   アイテム作成
                 </Link>
@@ -101,13 +101,13 @@ export default function Header() {
               <div className="py-6">
               <Link
                   href="/user/register"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-blue-600 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-blue-600 hover:bg-gray-50" onClick={() => setMobileMenuOpen(false)}
                 >
                   新規登録
                 </Link>
                 <Link
                   href="/user/login"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" onClick={() => setMobileMenuOpen(false)}
                 >
                   ログイン
                 </Link>
