@@ -1,5 +1,7 @@
 "use client"
 import { useState } from "react";
+import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 
 export default function Register(){
   const [newUser, setNewUser] = useState({
@@ -34,6 +36,7 @@ export default function Register(){
   }
 
   return(
+    <>
     <div>
       <h1 className="text-4xl font-bold">ユーザー登録</h1>
       <form onSubmit={handleSubmit}>
@@ -43,5 +46,6 @@ export default function Register(){
         <button>登録</button>
       </form>
     </div>
+    </>
   );
 }
