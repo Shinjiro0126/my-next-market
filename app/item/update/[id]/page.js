@@ -11,6 +11,7 @@ export default function UpdateItem(context){
     description: "",
     email: ""
   })
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   const loginUserEmail = useAuth();
@@ -36,6 +37,7 @@ export default function UpdateItem(context){
         description: singleItem.description,
         email: singleItem.email
       })
+      setLoading(true);
     }
     getSingleItem(context.params.id);
   }, [context])
@@ -62,7 +64,7 @@ export default function UpdateItem(context){
     }
   }
 
-
+if(loading){
   if(loginUserEmail === createItem.email){
     return (
       <div>
@@ -79,4 +81,7 @@ export default function UpdateItem(context){
   } else {
     return <h1>権限がありません</h1>
   }
+} else {
+  return <h1>ローディング中...</h1>
+}
 }

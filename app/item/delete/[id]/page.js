@@ -12,6 +12,7 @@ export default function DeleteItem(context){
     description: "",
     email: ""
   })
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter();
   const loginUserEmail = useAuth();
@@ -37,6 +38,8 @@ export default function DeleteItem(context){
         description: singleItem.description,
         email: singleItem.email
       })
+
+      setLoading(true);
     }
     getSingleItem(context.params.id);
   }, [context])
@@ -63,20 +66,22 @@ export default function DeleteItem(context){
     }
   }
 
-  if(loginUserEmail === email){
-    return (
-      <div>
-        <h1>アイテム削除</h1>
-        <form onSubmit={handleSubmit}>
-          <h2>{createItem.title}</h2>
-          <Image src={createItem.image} width={750} height={500} />
-          <h3>¥{createItem.price}</h3>
-          <p>{createItem.description}</p>
-          <button>削除</button>
-        </form>
-      </div>
-    );
-  } else {
-    return <h1>権限がありません</h1>
+  if(loading){
+    if(loginUserEmail === createItem.email){
+      return (
+        <div>
+          <h1>アイテム削除</h1>
+          <form onSubmit={handleSubmit}>
+            <h2>{createItem.title}</h2>
+            <Image src={createItem.image} width={750} height={500} />
+            <h3>¥{createItem.price}</h3>
+            <p>{createItem.description}</p>
+            <button>削除</button>
+          </form>
+        </div>
+      );
+    } else {
+      return <h1>権限がありません</h1>
+    }
   }
 }
