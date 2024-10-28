@@ -2,6 +2,9 @@
 const nextConfig = {
   images: {
     domains: ['tailwindui.com'],
+    remotePatterns: [{
+      hostname: "res.cloudinary.com"
+    }]
   },
 };
 
